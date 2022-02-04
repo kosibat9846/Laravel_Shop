@@ -19,11 +19,13 @@ class ProductMDBController extends Controller
         }
     }
 
-    public function show(Products $_id): JsonResponse
+    public function show( $_id): JsonResponse
     {
-        $productdetails = Products::where('_id','like','%' . $_id . '%')->get();
+        $show = Products::where('_id', 'like', '%' . $_id . '%')->get();
 
-        return response()->json($productdetails);
+        //find(_id)
+        //where('_id',id)
+        return response()->json($show);
     }
 
     public function search($name): JsonResponse
@@ -46,7 +48,7 @@ class ProductMDBController extends Controller
 ///////////////////API
 ///
 
-    public function productdetails($_id): JsonResponse
+    public function productdetails(Products $_id): JsonResponse
     {
 
 

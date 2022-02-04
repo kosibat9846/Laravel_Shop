@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProductMDBController;
 use App\Http\Controllers\ProductSQLController;
 
+use App\Models\MDB\Products;
 use Illuminate\Support\Facades\Route;
 
 
@@ -24,14 +25,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/sql-products','ProductSQLController');
+Route::resource('sql-products','ProductSQLController');
 
-Route::get('/sql-products/search/{name}',[ProductSQLController::class,'search']);
-Route::get('/sql-productdetails/{product_id}',[ProductSQLController::class,'productdetail']);
+Route::get('sql-products/search/{name}',[ProductSQLController::class,'search']);
+Route::get('sql-productdetails/{product_id}',[ProductSQLController::class,'productdetail']);
 
-Route::get('/sql-categories',[ProductSQLController::class,'categories']);
-Route::get('/sql-subcategories/{category_id}',[ProductSQLController::class,'subcategories']);
-Route::get('/sql-subcategoriesproducts/{subcategory_id}',[ProductSQLController::class,'subcategoriesproducts']);
+Route::get('sql-categories',[ProductSQLController::class,'categories']);
+Route::get('sql-subcategories/{category_id}',[ProductSQLController::class,'subcategories']);
+Route::get('sql-subcategoriesproducts/{subcategory_id}',[ProductSQLController::class,'subcategoriesproducts']);
 
 
 
@@ -50,17 +51,11 @@ Route::get('/sql-subcategoriesproducts/{subcategory_id}',[ProductSQLController::
 
 ////// MONGODB
 
-Route::resource('/nosql/products','ProductMDBController');//// Wszytskie produkty
-Route::get('/nosql/product/{_id}',[ProductMDBController::class,'productdetails']); ///Jeden produkt
-Route::get('/nosql/categories',[ProductMDBController::class,'categories']); ////Wszytskie kategorie
+Route::resource('nosql/products','ProductMDBController');//// Wszytskie produkty
+Route::get('product/{id}',[ProductMDBController::class,'productdetails']); ///Jeden produkt
+Route::get('nosql/categories',[ProductMDBController::class,'categories']); ////Wszytskie kategorie
 
-///
-///
-///
-///
-Route::get('/nosql-search/{name}',[ProductMDBController::class,'search']);
-Route::get('/nosql-subcategories/{category}',[ProductMDBController::class,'subcategories']);
-Route::get('/nosql/subcategoriesindex/{subcategory}',[ProductMDBController::class,'subcategoriesindex']);
+Route::get('search/{name}',[ProductMDBController::class,'search']);
 
 
 

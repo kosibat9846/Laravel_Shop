@@ -13,7 +13,16 @@ class Products extends Eloquent
     protected $connection = 'mongodb';
     protected $collection = 'products';
 
-    protected $fillable = [
-        'name', 'description','quantity','category','subcategory'
-    ];
+    protected $guarded = [];
+
+
+
+//        $fillable = [
+//       '_id', 'name', 'description','quantity','category','subcategory'
+//    ];
+    public static function find($_id)
+    {
+    }
+
+
 }
