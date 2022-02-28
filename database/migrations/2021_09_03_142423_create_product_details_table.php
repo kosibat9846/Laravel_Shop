@@ -25,23 +25,28 @@ class CreateProductDetailsTable extends Migration
             $table->integer('height');
             $table->integer('width');
             $table->integer('length');
-            $table->integer('bulk_pack');//opakowanie zbiorcze
-            $table->integer('drill_diameter');//średnica  wiercenia
-            $table->string('material_corps');//materiał korpusu
+            $table->integer('bulk_pack');
+            $table->integer('drill_diameter');
+            $table->string('material_corps');
             $table->string('anti_corrosion_protection');
-            $table->string('thread_size');//rozmiar gwintu
+            $table->string('thread_size');
             $table->integer('thread_length');
             $table->integer('nut_width');
             $table->integer('nut_length');
-            $table->integer('nut_thickness');//grubosc nakrętki
-            $table->integer('shank_diameter');//średnica trzonu
-            $table->integer('pin_length');//długość trzpienia
-            $table->integer('flange_diameter');//średnica kołnierza
-            $table->integer('hole_size');//rozmiar otworu
-            $table->integer('hardness_class');//klasa twardości
-            $table->integer('head_diameter');//średnica łebka
+            $table->integer('nut_thickness');
+            $table->integer('shank_diameter');
+            $table->integer('pin_length');
+            $table->integer('flange_diameter');
+            $table->integer('hole_size');
+            $table->integer('hardness_class');
+            $table->integer('head_diameter');
             $table->integer('head_length');
-            $table->string('socket_type');// rodzaj gniazda
+            $table->string('socket_type');
+            $table->foreign('product_id')->references('id')->on('products');
+
+
+
+
 
 
 

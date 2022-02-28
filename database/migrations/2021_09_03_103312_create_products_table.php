@@ -1,5 +1,5 @@
-<?php
 
+<?php
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -24,10 +24,10 @@ class CreateProductsTable extends Migration
             $table->decimal('net_price');
             $table->integer('quantity');
             $table->boolean('availability');
-
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('subcategory_id')->references('id')->on('subcategoris');
         });
     }
-
     /**
      * Reverse the migrations.
      *php
