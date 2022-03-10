@@ -24,11 +24,13 @@ class ProductSQLController extends Controller
 
     }
 
-    public function show(Product $product)
-    {
-        return view('product.show', compact('product'));
-    }
 
+    public function show( $_id): JsonResponse
+    {
+        $show = Product::where('_id', 'like', '%' . $_id . '%')->get();
+
+        return response()->json($show);
+    }
 
     public function create()
     {
@@ -49,6 +51,7 @@ class ProductSQLController extends Controller
             ->with('success', 'Product created successfully.');
     }
 
+/////////
 
     public function search($name): JsonResponse
     {
@@ -62,20 +65,8 @@ class ProductSQLController extends Controller
 
 
 
-
-
-
-
-
-    /////////////////////////API
-
-
-
     public function categories(): JsonResponse
     {
-
-
-
 
 
         $categories = Category::all('name');
@@ -85,22 +76,9 @@ class ProductSQLController extends Controller
 
     }
 
-        public function productdetail($product_id): JsonResponse
-        {
 
-
-            $productdetails = Productdetails::where('product_id','like','%' . $product_id . '%')->get();
-
-            return response()->json($productdetails);
-        }
-
-
-
-
-
-
-        public function subcategories($category_id): JsonResponse
-        {
+    public function subcategories($category_id): JsonResponse
+    {
             $subcategories = Subcategory::where('category_id','like','%' . $category_id . '%')->get();
 
 
@@ -108,27 +86,6 @@ class ProductSQLController extends Controller
             return response()->json($subcategories);
 
 
-        }
-
-
-         public function subcategoriesproducts($subcategory_id): JsonResponse
-    {
-
-        $subcategoriesproducts = Product::where('subcategory_id','like','%' . $subcategory_id . '%')->get();
-
-        return  response()->json($subcategoriesproducts);
-
     }
-
-
-
-
-
-
-
-
-
-
-
 
 }

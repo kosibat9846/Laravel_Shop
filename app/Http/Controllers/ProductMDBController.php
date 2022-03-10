@@ -12,12 +12,11 @@ class ProductMDBController extends Controller
 
     public function index(): JsonResponse
     {
-        {
             $products = Products::all();
             return response()->json($products);
 
-        }
     }
+
 
     public function show( $_id): JsonResponse
     {
@@ -32,7 +31,7 @@ class ProductMDBController extends Controller
             $search = Products::where('name', 'like', '%' . $name . '%')->get();
             return response()->json($search);
 
-        }
+    }
 
     public function productdetails(Products $_id): JsonResponse
     {
@@ -52,7 +51,7 @@ class ProductMDBController extends Controller
 
     return response()->json($categories);
 
-}
+    }
 
 
     public function subcategories($category): JsonResponse
@@ -64,18 +63,8 @@ class ProductMDBController extends Controller
      return response()->json($subcategories);
 
 
-        }
-
-
-
-    public function subcategoriesindex($subcategory): JsonResponse
-    {
-
-        $subcategoriesindex = Products::where('subcategory','like','%' . $subcategory . '%')->get();
-
-        return  response()->json($subcategoriesindex);
-
     }
+
 
 
 

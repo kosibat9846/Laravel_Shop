@@ -26,6 +26,7 @@ Route::get('/', function () {
 });
 
 Route::resource('sql-products','ProductSQLController');
+
 Route::get('sql-products/search/{name}',[ProductSQLController::class,'search']);
 Route::get('sql-productdetails/{product_id}',[ProductSQLController::class,'productdetail']);
 Route::get('sql-categories',[ProductSQLController::class,'categories']);
@@ -35,10 +36,9 @@ Route::get('sql-subcategories/{category_id}',[ProductSQLController::class,'subca
 
 ////// MONGODB
 
-Route::resource('nosql/products','ProductMDBController');//// Wszytskie produkty
-Route::get('product/{id}',[ProductMDBController::class,'productdetails']); ///Jeden produkt
-Route::get('nosql/categories',[ProductMDBController::class,'categories']); ////Wszytskie kategorie
+Route::resource('nosql/products','ProductMDBController');
 
+Route::get('nosql/categories',[ProductMDBController::class,'categories']);
 
 
 
